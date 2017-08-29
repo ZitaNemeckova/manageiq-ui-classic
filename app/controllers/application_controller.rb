@@ -562,14 +562,21 @@ class ApplicationController < ActionController::Base
   def report_only
     @report_only = true                 # Indicate stand alone report for views
     # Render error message if report doesn't exist
+    #params[:rr_id] = @sb[:pages][:rr_id] = nil
     if params[:rr_id].nil? && @sb.fetch_path(:pages, :rr_id).nil?
       add_flash(_("This report isn't generated yet. It cannot be rendered."), :error)
-      render :partial => "layouts/flash_msg"
+      render :partial => "layouts/flash_msg", :layout => 'fullscreen_report'
       return
     end
     # Dashboard widget will send in report result id else, find report result in the sandbox
     search_id = params[:rr_id] ? params[:rr_id].to_i : @sb[:pages][:rr_id]
-    rr = MiqReportResult.for_user(current_user).find(search_id)
+    rr = MiqReportResult.for_user(current_user).find_by(:id => search_id)
+
+    if rr.nil?
+      add_flash(_("This user cannot access this report. It cannot be rendered."), :error)
+      render :partial => "layouts/flash_msg", :layout => 'fullscreen_report'
+      return
+    end
 
     session[:report_result_id] = rr.id  # Save report result id for chart rendering
     session[:rpt_task_id]      = nil    # Clear out report task id, using a saved report
