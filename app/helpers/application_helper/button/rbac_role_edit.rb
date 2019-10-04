@@ -1,3 +1,4 @@
+
 class ApplicationHelper::Button::RbacRoleEdit < ApplicationHelper::Button::Basic
   needs :@record
 

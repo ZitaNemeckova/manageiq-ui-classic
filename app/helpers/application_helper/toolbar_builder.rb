@@ -17,6 +17,7 @@ class ApplicationHelper::ToolbarBuilder
 
     build_toolbar_setup
     toolbar_class = toolbar_class(toolbar_name)
+    binding.pry
     build_toolbar_from_class(toolbar_class, @record)
   end
 
@@ -116,7 +117,7 @@ class ApplicationHelper::ToolbarBuilder
   def apply_common_props(button, input)
     button.update(
       :color        => input[:color],
-      :data         => input[:data],
+      :data         => button.data,
       :hidden       => button[:hidden] || !!input[:hidden],
       :icon         => input[:icon],
       :name         => button[:id],

@@ -248,6 +248,7 @@ class GenericObjectDefinitionController < ApplicationController
     custom_button_group_node_info(node)
     presenter.update(:main_div, r[:partial => 'show_custom_button_group'])
     presenter.hide(:paging_div)
+    binding.pry
     [build_toolbar("x_summary_view_tb"), build_toolbar("generic_object_definition_button_group_center_tb")]
   end
 
@@ -255,6 +256,7 @@ class GenericObjectDefinitionController < ApplicationController
     custom_button_node_info(node)
     presenter.update(:main_div, r[:partial => 'show_custom_button'])
     presenter.hide(:paging_div)
+    binding.pry
     [build_toolbar("x_summary_view_tb"), build_toolbar("generic_object_definition_button_center_tb")]
   end
 

@@ -1,4 +1,6 @@
 class ApplicationHelper::Button::GenericObjectDefinitionButtonDelete < ApplicationHelper::Button::Basic
+  needs :@record
+
   def visible?
     @display != 'generic_objects'
   end

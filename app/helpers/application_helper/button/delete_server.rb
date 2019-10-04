@@ -1,3 +1,4 @@
+
 class ApplicationHelper::Button::DeleteServer < ApplicationHelper::Button::ZoneDeleteServer
   needs :@record
 

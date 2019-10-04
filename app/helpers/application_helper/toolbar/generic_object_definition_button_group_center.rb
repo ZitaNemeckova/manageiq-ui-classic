@@ -21,8 +21,6 @@ class ApplicationHelper::Toolbar::GenericObjectDefinitionButtonGroupCenter < App
           :ab_button_delete,
           'pficon pficon-delete fa-lg',
           N_('Remove this Button Group from Inventory'),
-          :data    => {'function'      => 'sendDataWithRx',
-                       'function-data' => '{"type": "delete_custom_button_set", "controller": "genericObjectDefinitionToolbarController", "entity": "Button Group"}'},
           :klass   => ApplicationHelper::Button::GenericObjectDefinitionButtonButtonGroupDelete,
           :confirm => N_("Warning: This Button Group will be permanently removed!"),
         ),

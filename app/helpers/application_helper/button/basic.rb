@@ -4,6 +4,7 @@ class ApplicationHelper::Button::Basic < Hash
   delegate :role_allows?, :parse_nodetype_and_id, :to => :@view_context
 
   def initialize(view_context, view_binding, instance_data, props)
+    binding.pry
     @view_context  = view_context
     @view_binding  = view_binding
 
@@ -12,6 +13,10 @@ class ApplicationHelper::Button::Basic < Hash
     instance_data.each do |name, value|
       instance_variable_set(:"@#{name}", value)
     end
+  end
+
+  def data
+    self[:data]
   end
 
   def role_allows_feature?
